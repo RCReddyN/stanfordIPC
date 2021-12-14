@@ -1,3 +1,8 @@
+/*
+ID: rcreddyn
+TASK: RideToSchool
+LANG: JAVA
+*/
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -63,4 +68,28 @@ class FastIO{
             e.printStackTrace();
         }
     }
+}
+
+public class RideToSchool{
+	public static void main(String [] args){
+		FastIO io = new FastIO();
+        String line;
+        while(!"0".equals(line = io.nextLine())){
+            int n = Integer.parseInt(line);
+            double minTimeTaken = Double.MAX_VALUE;
+            for(int i=0; i<n; i++){
+                int speed = io.nextInt();
+                int time = io.nextInt();
+                double timeTaken = 0;
+                if(time >= 0){
+                    timeTaken = (4.5/speed)*(60*60) + time;
+                    if(timeTaken < minTimeTaken){
+                        minTimeTaken = timeTaken;
+                    }
+                }
+            }
+            io.write((int)(Math.ceil(minTimeTaken))+"\n");
+        }
+		io.close();
+	}
 }

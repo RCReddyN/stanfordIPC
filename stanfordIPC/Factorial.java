@@ -1,3 +1,8 @@
+/*
+ID: rcreddyn
+TASK: Factorial
+LANG: JAVA
+*/
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -63,4 +68,22 @@ class FastIO{
             e.printStackTrace();
         }
     }
+}
+
+public class Factorial{
+	public static void main(String [] args){
+		FastIO io = new FastIO();
+        int t = io.nextInt();
+        while(t-- > 0){
+            int n = io.nextInt();
+            int z = 0;
+            int d = 5;
+            while(n/d > 0){
+                z += n/d;
+                d=d*5;
+            }
+            io.write(z+"\n");
+        }
+		io.close();
+	}
 }

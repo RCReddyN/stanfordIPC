@@ -1,8 +1,15 @@
+/*
+ID: rcreddyn
+TASK: Yeehaa
+LANG: JAVA
+*/
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.StringTokenizer;
 
 class FastIO{
@@ -63,4 +70,19 @@ class FastIO{
             e.printStackTrace();
         }
     }
+}
+
+public class Yeehaa{
+	public static void main(String [] args){
+		FastIO io = new FastIO();
+        int t = io.nextInt();
+        for(int i=1; i<=t; i++){
+            double R = io.nextDouble();
+            int n = io.nextInt();
+            double r = R/(1 + 1/Math.sin(Math.PI/n));
+            io.write("Scenario #"+i+":\n");
+            io.write(String.format("%.3f", r)+"\n\n");
+        }
+		io.close();
+	}
 }
