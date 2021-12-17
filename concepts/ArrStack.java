@@ -1,0 +1,133 @@
+/*
+ID: rcreddyn
+Implementing ArrStack
+LANG: JAVA
+*/
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.StringTokenizer;
+
+class FastIO{
+    private BufferedReader input;
+    private StringTokenizer st;
+    private BufferedWriter output;
+    
+    FastIO(){
+        input = new BufferedReader(new InputStreamReader(System.in));
+        output = new BufferedWriter(new OutputStreamWriter(System.out));
+    }
+
+    String nextLine(){
+        String str = "";
+        try{
+            str = input.readLine();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+        return str;
+    }
+
+    String next(){
+        while(st == null || !st.hasMoreTokens()){
+            st = new StringTokenizer(nextLine());
+        }
+        return st.nextToken();
+    }
+    
+    int nextInt(){
+        return Integer.parseInt(next());
+    }
+
+    double nextDouble(){
+        return Double.parseDouble(next());
+    }
+
+    long nextLong(){
+        return Long.parseLong(next());
+    }
+
+    void write(String content){
+        try{
+            output.append(content+"");
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    void close(){
+        try{
+            output.flush();
+            input.close();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+}
+
+public class ArrStack{
+    private int [] arr;
+    private int capacity;
+    private int size;
+    ArrStack(int capacity){
+        this.capacity = capacity;
+        size = 0;
+        arr = new int [capacity];
+    }
+
+    boolean isEmpty(){
+        return size <= 0;
+    }
+
+    boolean isFull(){
+        return size >= capacity;
+    }
+
+    void push(int val){
+        if(isFull()){
+            return;
+        }
+        arr[size] = val;
+        size++;
+    }
+
+    void pop(){
+        if(isEmpty()){
+            return;
+        }
+        size--;
+    }
+
+    int top(){
+        if(isEmpty()){
+            return Integer.MIN_VALUE;
+        }
+        return arr[size-1];
+    }
+
+    void print(FastIO io){
+        for(int i=size-1; i>=0; i--){
+            io.write(arr[i]+" ");
+        }
+        io.write("\n");
+    }
+	public static void main(String [] args){
+		FastIO io = new FastIO();
+        ArrStack s = new ArrStack(1000);
+        s.push(10);
+        s.push(20);
+        s.push(30);
+        int val = s.top();
+        s.pop();
+        io.write(val + " Popped from stack\n");
+        io.write("Top element is: " + s.top()+"\n");
+        io.write("Elements present in stack: ");
+        s.print(io);
+		io.close();
+	}
+}

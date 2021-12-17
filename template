@@ -3,7 +3,7 @@
 fileName = input("Enter task name: ")
 with open(fileName+".java", "w") as f1:
     f1.write("/*\nID: rcreddyn\nTASK: "+fileName+"\nLANG: JAVA\n*/\n")
-    with open("./FastIO.java","r") as f2:
+    with open("../FastIO.java","r") as f2:
         f1.write(f2.read()+"\n\n")
     f1.write("public class "+fileName +"{\n")
     f1.write("\tpublic static void main(String [] args){\n")
